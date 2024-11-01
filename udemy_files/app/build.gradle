@@ -64,5 +64,18 @@ application {
 	javaGreeter()
 	foo=5
 	println "doubleIt($foo)= ${doubleIt(foo)}"
+
+	def noArgs(){
+		println "Called No argument functions"
+	}
+	def oneArg(x){
+		println "Called 1 arg function with $x"
+		x
+	}
+	def twoArgs(x,y){
+		println "Called the 2 arg funtion with $x and $y"
+	}
+	
+	oneArg 500
 	}
 }
