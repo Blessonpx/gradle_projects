@@ -46,12 +46,23 @@ java {
 
 def javaGreeter(){
 	println 'hello'
+	def foo = 6.024004
+	println "foo has value: $foo"
+}
+def doubleIt(n){
+	n+n
 }
 
 application {
     // Define the main class for the application.
     mainClass = 'org.example.App'
+    def foo = 684.88928
+    println "foo has value: $foo "
     task groovy{
+	foo = 89899.2092
+	println "foo has value :$foo "
 	javaGreeter()
+	foo=5
+	println "doubleIt($foo)= ${doubleIt(foo)}"
 	}
 }
