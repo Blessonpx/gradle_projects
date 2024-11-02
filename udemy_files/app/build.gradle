@@ -52,6 +52,23 @@ def javaGreeter(){
 def doubleIt(n){
 	n+n
 }
+def noArgs(){
+	println "Called No Argument Function"
+}
+def oneArgs(x){
+	println "Called 1 args funtion $x"
+	x
+}
+def twoArgs(x,y){
+	println "Called 2 args function with $x and $y"
+	x+y
+}
+def justDoubleIt = {x->x+x}
+def applyTwice(func,arg){
+	func(func(arg))
+}
+// task defined under application
+// functions always defined outside application
 
 application {
     // Define the main class for the application.
@@ -64,18 +81,25 @@ application {
 	javaGreeter()
 	foo=5
 	println "doubleIt($foo)= ${doubleIt(foo)}"
+	oneArgs 500
+	twoArgs 400, 500
+	noArgs()
+	// nested funtion calls
+	twoArgs oneArgs(500), 400
+	}
 
-	def noArgs(){
-		println "Called No argument functions"
-	}
-	def oneArg(x){
-		println "Called 1 arg function with $x"
-		x
-	}
-	def twoArgs(x,y){
-		println "Called the 2 arg funtion with $x and $y"
-	}
-	
-	oneArg 500
-	}
+    foo="one million dollars"
+    def myClosure={
+	println "Hello from closure"
+	println "The value of foo is $foo"
+}
+    myClosure()
+// Enclose Closure into variable
+def bar = myClosure
+def baz = bar
+baz()
+
+foo =5
+def fooAppliedTwice= applyTwice(justDoubleIt,foo)
+println "applying higher level function applyTwice on justDoubleIt to $foo equals $fooAppliedTwice"
 }
